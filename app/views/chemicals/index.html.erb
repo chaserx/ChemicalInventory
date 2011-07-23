@@ -1,0 +1,45 @@
+<% content_for(:title, "Chemicals") %>
+<h2>Currently Storing <%= number_of_chemicals %> Chemicals</h2>
+
+<div id="controls">
+	Functions:
+	<%= link_to 'Add a New Chemical', new_chemical_path %> |
+	<%= link_to 'Export Database', chemicals_path(:csv) %> |
+	<%= link_to 'Upload Chemfile', new_import_path %>
+</div>
+<%= paginate @chemicals %>
+<div id="chemtable">
+	<table>
+	  <tr>
+	    <th>Name</th>
+			<th>CAS</th>
+			<th>Formula</th>
+	    <th>AMT.</th>
+	    <th>QTY.</th>
+			<th>Location</th>
+			<th>Storage</th>
+			<th>Notes</th>
+			<th>Date Entered</th>
+			<th>MSDS</th>
+			<th colspan="2">Actions</th>
+	  </tr>
+	  <% for chemical in @chemicals %>
+	    <tr>
+	      <td><%= link_to(h(chemical.name), chemical) %><br /> <span class="infolinks">{ <%= link_to "PubChem", "http://www.ncbi.nlm.nih.gov/sites/entrez?db=pcsubstance&cmd=search&term=#{chemical.name}", :popup => TRUE, :class => "pubchemlinks" %> | <%= link_to "NIST", "http://webbook.nist.gov/cgi/cbook.cgi?Name=#{chemical.name}&Units=SI", :popup => TRUE, :class => 'nistlink'  %> }</span></td>
+				<td><%=h chemical.cas %></td>
+				<td><%=h chemical.formula %></td>
+				<td><%=h chemical.amount  %></td>
+				<td><%= h chemical.quantity %></td>
+				<td><%= h chemical.location %></td>
+				<td><%= h chemical.storage %></td>
+				<td><%= h truncate(chemical.notes, :length=>10) %></td>
+				<td><%= h time_ago_in_words(chemical.created_at) %></td>
+				<td><%= has_msds(chemical) %></td>
+	      <td><%= link_to "Edit", edit_chemical_path(chemical) %></td>
+	      <td><%= link_to "Destroy", chemical, :confirm => 'Are you sure?', :method => :delete %></td>
+	    </tr>
+	  <% end %>
+	</table>
+</div>
+
+<%= paginate @chemicals %>

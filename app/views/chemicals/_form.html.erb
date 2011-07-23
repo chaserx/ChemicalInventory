@@ -1,0 +1,71 @@
+<%= form_for @chemical, :html => { :multipart => true } do |f| %>
+  <% if @chemical.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@chemical.errors.count, "error") %> prohibited this chemical from being saved:</h2>
+
+      <ul>
+      <% @chemical.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+    <p>
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
+    </p>
+  	<p>
+  		<%= f.label :cas %><br />
+  		<%= f.text_field :cas %>
+  	</p>
+  	<p>
+  		<%= f.label :formula %><br />
+  		<%= f.text_field :formula %>
+  	</p>
+  	<p>
+  		<%= f.label :amount %><br />
+  		<%= f.text_field :amount %>
+  	</p>
+  	<p>
+  		<%= f.label :quantity %><br />
+  		<%= f.text_field :quantity %>
+  	</p>
+  	<p>
+  		<%= f.label :location %><br />
+  		<%= f.text_field :location %>
+  	</p>
+  	<p>
+  		<%= f.label :storage %><br />
+  		<%= f.text_field :storage %>
+  	</p>
+  	<p>
+  		<%= f.label :smiles %><br />
+  		<%= f.text_field :smiles %>
+  	</p>
+  	<p>
+  		<%= f.label :inchi %><br />
+  		<%= f.text_field :inchi %>
+  	</p>
+  	<p>
+  		<%= f.label :supplier %><br />
+  		<%= f.text_field :supplier %>
+  	</p>
+  	<p>
+  		<%= f.label :catalognumber %><br />
+  		<%= f.text_field :catalognumber %>
+  	</p>
+  	<p>
+  		<%= f.label :notes %><br />
+  		<%= f.text_area :notes %>
+  	</p>
+  	<p>
+  		<%= f.label :msds %><br />
+  		<%= f.file_field :msds %>
+  	</p>
+
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

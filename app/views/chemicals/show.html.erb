@@ -1,0 +1,58 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%=h @chemical.name %></h1>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @chemical.name %>
+</p>
+<p>
+  <b>Amount:</b>
+  <%= @chemical.amount %>
+</p>
+<p>
+  <b>Quantity:</b>
+  <%= @chemical.quantity %>
+</p>
+<p>
+  <b>Location:</b>
+  <%= @chemical.location %>
+</p>
+<p>
+  <b>Storage:</b>
+  <%= @chemical.storage %>
+</p>
+<p>
+  <b>Notes:</b>
+  <%= @chemical.notes %>
+</p>
+<p>
+  <b>Formula:</b>
+  <%= @chemical.formula %>
+</p>
+<p>
+  <b>CAS:</b>
+  <%= @chemical.cas %>
+</p>
+<p>
+  <b>Supplier:</b>
+  <%= @chemical.supplier %>
+</p>
+<p>
+  <b>Catalog Number:</b>
+  <%= @chemical.catalognumber %>
+</p>
+<p>
+  <b>SMILES:</b>
+  <%= @chemical.smiles %>
+</p>
+<p>
+  <b>INCHI:</b>
+  <%= @chemical.inchi %>
+</p>
+
+
+
+
+<%= link_to 'Edit', edit_chemical_path(@chemical) %> |
+<%= link_to 'Back', chemicals_path %>

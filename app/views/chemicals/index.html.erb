@@ -32,8 +32,8 @@
 				<td><%= h chemical.quantity %></td>
 				<td><%= h chemical.location %></td>
 				<td><%= h chemical.storage %></td>
-				<td><%= h truncate(chemical.notes, :length=>10) %></td>
-				<td><%= h time_ago_in_words(chemical.created_at) %></td>
+				<td><% if chemical.notes? %>Read More<% end %></td>
+				<td><%= h chemical.created_at.to_s(:month_and_year) %></td>
 				<td class="msds"><%= has_msds(chemical) %></td>
 	      <td class="actions"><%= link_to "Edit", edit_chemical_path(chemical) %></td>
 	      <td class="actions"><%= link_to "Destroy", chemical, :confirm => 'Are you sure?', :method => :delete %></td>

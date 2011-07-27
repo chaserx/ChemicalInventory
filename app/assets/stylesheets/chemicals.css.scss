@@ -23,8 +23,11 @@ table{
   border-collapse:collapse;
   border-spacing:0;
 }
+th{
+  text-align:left;
+}
 td{
-  border: 0;
+  padding-right:1em;
 }
 .even{
   background-color:#e1eefd;

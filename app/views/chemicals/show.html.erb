@@ -53,4 +53,4 @@
 
 
 <%= link_to 'Edit', edit_chemical_path(@chemical) %> |
-<%= link_to 'Back', chemicals_path(params[:page => session[:ChemicalInventory_current_page]]) %>
+<%= link_to 'Back', chemicals_path(:page => cookies[:chemical_inventory_current_page]) %>

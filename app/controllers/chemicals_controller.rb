@@ -6,7 +6,8 @@ class ChemicalsController < ApplicationController
     #@chemicals = Chemical.all
     @chemicals = Chemical.order("name ASC").page params[:page]
     
-    cookies[:ChemicalInventory_current_page] = params[:page] ? params[:page] : 1
+    # session[:ChemicalInventory_current_page] = params[:page] ? params[:page] : 1
+    cookies[:chemical_inventory_current_page] = params[:page] ? params[:page] : 1
     
     respond_to do |format|
       format.html

@@ -4,13 +4,15 @@ class ChemicalsController < ApplicationController
   # GET /chemicals.json
   def index
     #@chemicals = Chemical.all
-    @chemicals = Chemical.order(:name).page params[:page]
-
+    @chemicals = Chemical.order("name ASC").page params[:page]
+    
+    cookies[:ChemicalInventory_current_page] = params[:page] ? params[:page] : 1
+    
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @chemicals }
       format.csv {
-            chemicals = Chemical.all
+            chemicals = Chemical.order("name ASC")
             csv = CSV.generate do |csv|
               csv << ["Name", "CAS", "IUPAC Formula","SMILES", "InChI", "AMT", "QTY", "Location", "Storage", "Notes", "Supplier", "Catalog Number", "Date Entered"]
               chemicals.each do |item|

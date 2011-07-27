@@ -19,3 +19,19 @@ body.chemicals {
 #controls{
   margin:1em auto;
 }
+table{
+  border-collapse:collapse;
+  border-spacing:0;
+}
+td{
+  border: 0;
+}
+.even{
+  background-color:#e1eefd;
+}
+.msds{
+  background-color: #fff;
+}
+.actions{
+  background-color:#fff;
+}

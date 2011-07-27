@@ -24,7 +24,7 @@
 			<th colspan="2">Actions</th>
 	  </tr>
 	  <% for chemical in @chemicals %>
-	    <tr>
+	    <tr class=<%= cycle('odd', 'even') %>>
 	      <td><%= link_to(h(chemical.name), chemical) %><br /> <span class="infolinks">{ <%= link_to "PubChem", "http://www.ncbi.nlm.nih.gov/sites/entrez?db=pcsubstance&cmd=search&term=#{chemical.name}", :popup => TRUE, :class => "pubchemlinks" %> | <%= link_to "NIST", "http://webbook.nist.gov/cgi/cbook.cgi?Name=#{chemical.name}&Units=SI", :popup => TRUE, :class => 'nistlink'  %> }</span></td>
 				<td><%=h chemical.cas %></td>
 				<td><%=h chemical.formula %></td>
@@ -34,9 +34,9 @@
 				<td><%= h chemical.storage %></td>
 				<td><%= h truncate(chemical.notes, :length=>10) %></td>
 				<td><%= h time_ago_in_words(chemical.created_at) %></td>
-				<td><%= has_msds(chemical) %></td>
-	      <td><%= link_to "Edit", edit_chemical_path(chemical) %></td>
-	      <td><%= link_to "Destroy", chemical, :confirm => 'Are you sure?', :method => :delete %></td>
+				<td class="msds"><%= has_msds(chemical) %></td>
+	      <td class="actions"><%= link_to "Edit", edit_chemical_path(chemical) %></td>
+	      <td class="actions"><%= link_to "Destroy", chemical, :confirm => 'Are you sure?', :method => :delete %></td>
 	    </tr>
 	  <% end %>
 	</table>
